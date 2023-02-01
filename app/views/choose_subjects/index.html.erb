@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Choose subjects</h1>
+
+<div id="choose_subjects">
+  <% @choose_subjects.each do |choose_subject| %>
+    <%= render choose_subject %>
+    <p>
+      <%= link_to "Show this choose subject", choose_subject %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New choose subject", new_choose_subject_path %>

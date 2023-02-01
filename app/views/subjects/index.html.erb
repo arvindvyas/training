@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Subjects</h1>
+
+<div id="subjects">
+<% cache @subject do %>
+  <% @subjects.each do |subject| %>
+   
+  
+    <%= render subject %>
+   
+    <p>
+      <%= link_to "Show this subject", subject %>
+      <%= link_to "Add question", new_question_path %>
+    </p>
+  <% end %>
+<%end%>
+</div>
+
+<%= link_to "New subject", new_subject_path %>

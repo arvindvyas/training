@@ -1,0 +1,2 @@
+class ChooseSubject < ApplicationRecord
+end

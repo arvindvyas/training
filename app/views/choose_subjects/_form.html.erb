@@ -1,0 +1,22 @@
+<%= form_with(model: choose_subject) do |form| %>
+  <% if choose_subject.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(choose_subject.errors.count, "error") %> prohibited this choose_subject from being saved:</h2>
+
+      <ul>
+        <% choose_subject.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :selected_subject, style: "display: block" %>
+    <%= form.select :selected_subject, Subject.pluck(:subject_name,:id) %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

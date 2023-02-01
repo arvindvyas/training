@@ -1,0 +1,54 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Questions</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Question &nbsp;&nbsp;</th>
+      <th>Option-1&nbsp;&nbsp;</th>
+      <th>Option-2&nbsp;&nbsp;</th>
+      <th>Option-3&nbsp;&nbsp;</th>
+      <th>Option-4&nbsp;&nbsp;</th>
+      <th>Answer</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+    <tr>
+      <td>&nbsp;&nbsp;<%= question.question%></td>
+      <td>&nbsp;&nbsp;<%= question.first%></td>
+      <td>&nbsp;&nbsp;<%= question.second%></td>
+      <td>&nbsp;&nbsp;<%= question.third%></td>
+      <td>&nbsp;&nbsp;<%= question.forth%></td>
+      <td>&nbsp;&nbsp;<%= question.answer%></td>
+
+      <td><%= link_to "Edit this question", edit_question_path(question) %> &nbsp;&nbsp;</td>
+  <td><%= link_to "Show this question", question %>&nbsp;&nbsp;</td>
+
+  <td><%= button_to "Destroy this question", @question, method: :delete %>&nbsp;&nbsp;</td>
+
+    </tr>
+  <%end%>
+  </tbody>
+
+
+
+</table>
+
+
+
+
+<!-- <div id="questions">
+  <%# @questions.each do |question| %>
+    <%#= render question %>
+    <p>
+      <%#= link_to "Show this question", question %>
+    </p>
+  <%# end %>
+</div> -->
+
+<%= link_to "New question", new_question_path %><br><br>
+<%#= will_paginate @posts %>

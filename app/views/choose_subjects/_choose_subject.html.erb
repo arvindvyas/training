@@ -1,0 +1,9 @@
+<div id="<%= dom_id choose_subject %>">
+  <p>
+    <strong>Selected subject:</strong>
+    <%= Subject.where(id: choose_subject.selected_subject).pluck(:subject_name)[0]%>
+    <%#= choose_subject.selected_subject %>
+  </p>
+  <%= link_to "Open test page" ,  question_papers_path( subject_id: Subject.where(id: choose_subject.selected_subject).pluck(:subject_name)[0])%>
+
+</div>

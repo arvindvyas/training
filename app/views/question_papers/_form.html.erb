@@ -1,0 +1,37 @@
+<%= form_with(model: question_paper) do |form| %>
+<%binding.pry%>
+  <% if question_paper.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(question_paper.errors.count, "error") %> prohibited this question_paper from being saved:</h2>
+
+      <ul>
+        <% question_paper.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div>
+  <%=form.hidden_field :subject,value: subject %>
+  <%=form.hidden_field :user_id,value: current_user.id%>
+  <% @questions.try(:each_with_index) do |i, index|%>
+
+  <label>Q:-  <%= i.question%></label><br>
+  <input value="<%= i.question %>" autocomplete="off" type="hidden" name="question_paper[question][<%= index%>]" id="question_paper_question[0]">
+  <%#=form.hidden_field "question[#{index}]",value:  i.question %>
+  <input type="radio" value="<%= i.first%>" name="question_paper[answer][answer_1_<%= index %>]" ><%= i.first%><br>
+  <input type="radio" value="<%= i.second%>" name="question_paper[answer][answer_2_<%= index %>]" ><%= i.second%><br>
+<input type="radio" value="<%= i.third%>" name="question_paper[answer][answer_3_<%= index %>]" ><%= i.third%><br>
+<input type="radio" value="<%= i.forth%>" name="question_paper[answer][answer_4_<%= index %>]" ><%= i.forth%><br>
+   <%#= form.radio_button :answer, i.first%> <%#= i.first%><br>
+   <%#= form.radio_button :answer, i.second%> <%#= i.second%><br>
+   <%#= form.radio_button :answer, i.third%> <%#= i.third%><br>
+   <%#= form.radio_button :answer, i.forth%> <%#= i.forth%><br>
+
+<%end%>
+ </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
